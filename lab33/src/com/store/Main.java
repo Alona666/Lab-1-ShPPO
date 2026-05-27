@@ -42,20 +42,20 @@ public class Main {
         }
 
         try {
-            // 3. Ждем реального завершения работы ВСЕХ генераторов (Покупателей)
+            // 3. Ждем реального завершения работы всех генераторов (Покупателей)
             // Метод join() заставит main-поток ждать, пока покупатели не отработают свои циклы
             for (Thread shopper : shopperThreads) {
                 shopper.join();
             }
             System.out.println("\n[SYSTEM] Все генераторы отключены. Покупатели покинули зал.");
 
-// 4. ГАРАНТИРОВАННЫЙ СИГНАЛ: Отправляем маркеры завершения (Poison Pills)
+// 4. Гарантированный сигнал: Отправляем маркеры завершения (Poison Pills)
             // Создаем один фейковый товар с ВАЛИДНЫМИ данными, чтобы пройти строгие проверки ЛР1
             var dummyItem = new ProductItemBuilder()
                     .withProductId("SERVICE_PILL")
                     .withProductName("PoisonPillComponent")
                     .withBaseCostValue(BigDecimal.ONE) // На всякий случай цена > 0
-                    .withWeightInKilograms(0.001)      // ИСПРАВЛЕНИЕ: Вес строго больше нуля
+                    .withWeightInKilograms(0.001)      // Исправление: Вес строго больше нуля
                     .build();
 
             // Кладем в очередь ровно столько пилюль, сколько кассиров работают в системе
