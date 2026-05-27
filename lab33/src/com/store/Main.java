@@ -71,7 +71,7 @@ public class Main {
             System.err.println("[SYSTEM] Главный поток оркестратора был прерван.");
             Thread.currentThread().interrupt();
         } finally {
-            // 6. ИСПРАВЛЕНИЕ: Лог выводится строго ПОСЛЕ того, как все кассиры завершили join()
+            
             System.out.println("\n=== [SYSTEM] Работа магазина завершена. Все потоки остановлены. Очередь чиста ===");
         }
     }
